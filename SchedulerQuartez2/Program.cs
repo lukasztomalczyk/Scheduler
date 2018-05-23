@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Specialized;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Quartz;
@@ -11,14 +12,12 @@ namespace SchedulerQuartez2
     {
         static async Task Main(string[] args)
         {
+             Console.WriteLine(Directory.GetCurrentDirectory());
 
-//            for (int i = 0; i < 50; i++)
-//            {
-//               Thread.Sleep(100);
-//                Console.WriteLine(i);
-//            }
             ISchedulerFactory sf = new StdSchedulerFactory();
+            
             IScheduler sched = await sf.GetScheduler();
+            await sched.Start();
 
             IJobDetail job = JobBuilder.Create<ExampleJob>()
                     .WithIdentity("job1", "group1")
@@ -27,13 +26,29 @@ namespace SchedulerQuartez2
             ISimpleTrigger trigger = (ISimpleTrigger) TriggerBuilder.Create()
                 .WithIdentity("trigger1", "group1")
                 .StartNow()
-                .WithSimpleSchedule(x => x.WithIntervalInSeconds(1)
+                .WithSimpleSchedule(x => x.WithIntervalInSeconds(5)
                 .RepeatForever())
                 .Build();
             
             await sched.ScheduleJob(job, trigger);
-            Thread.Sleep(1000);
+            
+            Console.WriteLine("Write '1' to create file in checking directory to complite the job:");
+            
+            int caseSwitch = Convert.ToInt16(Console.ReadLine());
+            
+            if(caseSwitch == 1)
+            {
+                  CreateTheExpectedFile();
+                  Console.ReadKey();
+            }
+            
+            
             Console.ReadKey();
+        }
+
+        private static void CreateTheExpectedFile()
+        {
+            File.Create(Directory.GetCurrentDirectory()+"/SRC/test.txt");
         }
     }
 }
