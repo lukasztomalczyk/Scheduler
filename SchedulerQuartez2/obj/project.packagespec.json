@@ -1,0 +1,47 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "/home/lukasz/RiderProjects/SchedulerQuartez2/SchedulerQuartez2/SchedulerQuartez2.csproj",
+    "projectName": "SchedulerQuartez2",
+    "projectPath": "/home/lukasz/RiderProjects/SchedulerQuartez2/SchedulerQuartez2/SchedulerQuartez2.csproj",
+    "outputPath": "/home/lukasz/RiderProjects/SchedulerQuartez2/SchedulerQuartez2/obj/",
+    "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+    ],
+    "originalTargetFrameworks": [
+      "netcoreapp2.0"
+    ],
+    "frameworks": {
+      "netcoreapp2.0": {
+        "projectReferences": {}
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netcoreapp2.0": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.0.0, )",
+          "autoReferenced": true
+        },
+        "Quartz": {
+          "target": "Package",
+          "version": "[3.0.4, )"
+        }
+      },
+      "imports": [
+        "net461"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
+    }
+  }
+}
