@@ -32,7 +32,7 @@ namespace SchedulerQuartz3.Modules
 
         private static IJobDetail JobDetail()
         {
-            return JobBuilder.Create<ExampleJob1>()
+            return JobBuilder.Create<ExampleJob>()
                 .WithIdentity("job1", "group1")
                 .Build();
         }
