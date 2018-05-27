@@ -5,7 +5,7 @@ using Quartz;
 
 namespace SchedulerQuartz3.Modules
 {
-    public class JobListtener : IJobListener
+    public class JobListener : IJobListener
     {
         private static Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
@@ -25,6 +25,7 @@ namespace SchedulerQuartz3.Modules
             CancellationToken cancellationToken = new CancellationToken())
         {
             logger.Info("Job Executed.");
+            return Task.CompletedTask;
         }
 
         public string Name => "JobListener";
